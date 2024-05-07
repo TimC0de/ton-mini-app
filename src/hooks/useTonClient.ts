@@ -1,3 +1,5 @@
+'use client';
+
 import { getHttpEndpoint } from "@orbs-network/ton-access";
 import { useState } from "react";
 import { TonClient } from "ton";

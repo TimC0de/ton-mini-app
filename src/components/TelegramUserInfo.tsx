@@ -1,13 +1,37 @@
-import {Button, Card, Ellipsis, FlexBoxCol, FlexBoxRow} from "./styled/styled";
-import WebApp from "@twa-dev/sdk";
+'use client';
+
+import {Card, FlexBoxRow} from "./styled/styled";
+import {useInitData} from "@tma.js/sdk-react";
+import {useMemo} from "react";
 
 export function TelegramUserInfo() {
+    const initData = useInitData();
+
+    const initDataJson = useMemo(() => {
+        if (!initData) {
+            return 'Init data is empty.';
+        }
+        const { authDate, chat, hash, canSendAfter, queryId, receiver, user, startParam } = initData;
+
+        return JSON.stringify({
+            authDate,
+            chat,
+            hash,
+            canSendAfter,
+            queryId,
+            receiver,
+            user,
+            startParam,
+        }, null, ' ');
+    }, [initData]);
+
     return (
         <Card title="TelegramUserInfo">
-            <FlexBoxCol>
-                <h3>Init Data</h3>
-                <p>{WebApp.initData || 'No data'}</p>
-            </FlexBoxCol>
+            <FlexBoxRow>
+                <code>
+                    {initDataJson}
+                </code>
+            </FlexBoxRow>
         </Card>
     );
 }

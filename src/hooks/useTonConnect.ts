@@ -1,3 +1,5 @@
+'use client';
+
 import { CHAIN } from "@tonconnect/protocol";
 import { Sender, SenderArguments } from "ton-core";
 import { useTonConnectUI, useTonWallet } from "@tonconnect/ui-react";
