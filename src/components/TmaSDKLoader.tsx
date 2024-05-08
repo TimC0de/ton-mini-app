@@ -46,6 +46,8 @@ function SDKInitialState() {
 export function TmaSDKLoader({ children }: PropsWithChildren) {
     return (
         <SDKProvider options={{ cssVars: true, acceptCustomStyles: true, async: true }}>
+            {/*
+            // @ts-ignore */}
             <DisplayGate error={SDKProviderError}
                 loading={SDKProviderLoading}
                 initial={SDKInitialState} >
